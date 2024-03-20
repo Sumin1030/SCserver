@@ -9,7 +9,7 @@
     "nodemon": "^2.0.22"
   },
   "scripts": {
-    "server": "cd server && nodemon server",
+    "server": "nodemon server",
     "start": "concurrently --kill-others-on-fail \"npm run server\""
   }
 }
