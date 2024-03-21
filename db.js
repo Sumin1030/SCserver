@@ -4,10 +4,10 @@ const mysql = require('mysql');
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: 'typuz123',
+    user: 'admin',
+    password: 'canadasumin',
     port: 3306,
-    database: 'ftd',
+    database: 'sumin_in_canada',
     multipleStatements : true
 }); 
 
