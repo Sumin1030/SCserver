@@ -48,6 +48,8 @@ router.get('/isLogined', (req, res) => {
         ...session
     };
     console.log("session info : ", info);
+    res.header("Access-Control-Allow-Origin", "*"); // 모든 도메인
+    res.header("Access-Control-Allow-Origin", "https://sumin1030.github.io/SuminInCanadaFE/"); // 특정 도메인
     res.status(200).send(info);
 });
 
