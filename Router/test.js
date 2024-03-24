@@ -39,22 +39,24 @@ router.post('/signIn', (req, res) => {
         session.name = info.name;
     }
     session.lang = 'ENG';
-    res.status(200).send();
+    req.session.save(()=>res.send(session.name));
 })
 
 router.get('/isLogined', (req, res) => {
     const session = req.session;
     const info = {
-        ...session
+        name: session.name,
+        userid: session.userid,
+        isLogined: session.isLogined
     };
     console.log("session info : ", info);
     res.send(info);
 });
 
 router.get('/logout', (req, res) => {
-    req.session.isLogined = false;
+    req.session.destroy();
     console.log("logout", req.session.isLogined);
-    res.status(200).send(req.session.isLogined);
+    res.send(req.session.isLogined);
 });
 
 router.post('/setLanguage', (req, res) => {
@@ -66,7 +68,7 @@ router.post('/setLanguage', (req, res) => {
 
 router.get('/getLanguage', (req, res) => {
     let lang = req.session.lang;
-    res.status(200).send(lang);
+    res.send(lang);
 })
 
 router.post(`/addVisit`, (req, res) => {

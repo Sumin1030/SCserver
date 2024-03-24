@@ -9,7 +9,16 @@ const connection = mysql.createConnection({
     port: 3306,
     database: 'sumin_in_canada',
     multipleStatements : true
-}); 
+});
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'typuz123',
+//     database: 'ftd',
+//     port: 3306,
+//     multipleStatements : true
+// });
+
 
 // const db = createConnectionPool({
   

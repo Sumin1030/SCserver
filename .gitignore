@@ -22,6 +22,7 @@
 
 #image
 /upload
+/session
 
 npm-debug.log*
 yarn-debug.log*
