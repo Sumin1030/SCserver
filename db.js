@@ -45,9 +45,8 @@ const signUp = (info, callback) => {
 }
 const replaceInfo = (info) => {
     Object.keys(info).forEach(key => {
-        console.log(info[key]);
         if(typeof info[key] == 'string') {
-            info[key] = info[key].replaceAll("'", "\\'");
+            info[key] = info[key].replace(/["'"]/g, "\\'");
         }
     });
     return info;
