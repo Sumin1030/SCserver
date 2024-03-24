@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const router = express.Router();
-const db = require('./../db')
+const db = require('./../db');
 
 router.get('/', (req, res)=>{
     console.log("server.testRouter.js");
@@ -48,9 +48,7 @@ router.get('/isLogined', (req, res) => {
         ...session
     };
     console.log("session info : ", info);
-    res.header("Access-Control-Allow-Origin", "*"); // 모든 도메인
-    res.header("Access-Control-Allow-Origin", "https://sumin1030.github.io/SuminInCanadaFE/"); // 특정 도메인
-    res.status(200).send(info);
+    res.send(info);
 });
 
 router.get('/logout', (req, res) => {
@@ -62,7 +60,8 @@ router.get('/logout', (req, res) => {
 router.post('/setLanguage', (req, res) => {
     console.log('set', req.body.lang);
     req.session.lang = req.body.lang;
-    res.status(200).send(req.session.lang);
+    console.log(res.getHeaders());
+    res.send(req.session.lang);
 })
 
 router.get('/getLanguage', (req, res) => {
