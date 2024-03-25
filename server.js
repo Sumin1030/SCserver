@@ -26,7 +26,11 @@ app.use(session({
     secret: 'diary',
     resave: false,
     saveUninitialized: true,
-    store: new FileStore()
+    store: new FileStore(),
+    cookie: {
+        sameSite: 'none',
+        secure: true
+    }
 }));
 
 // app.use('/', (req, res, next)=> {
