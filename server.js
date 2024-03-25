@@ -11,7 +11,7 @@ app.use(cors({
     credentials: true,
     preflightContinue: true,
     // origin: 'http://localhost:3000'
-    origin: 'https://sumin1030.github.io'
+    origin: 'https://thisissumin.store'
 }));
 
 // body로 전달되는 내용 파싱. express 내장 모듈
