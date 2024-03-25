@@ -10,7 +10,7 @@ app.listen(port, ()=>{console.log(`Listening on port ${port}`);});
 app.use(cors({
     credentials: true,
     // origin: 'http://localhost:3000'
-    origin: 'https://sumin1030.github.io/'
+    origin: 'https://sumin1030.github.io'
 }));
 
 // body로 전달되는 내용 파싱. express 내장 모듈
