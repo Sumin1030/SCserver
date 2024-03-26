@@ -32,7 +32,7 @@ app.use(session({
     store: new FileStore(),
     cookie: {
         secure: true,
-        sameSite: none,
+        sameSite: 'none',
         domain: '.thisissumin.store'
     }
 }));
