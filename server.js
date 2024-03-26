@@ -28,7 +28,7 @@ app.use(session({
     saveUninitialized: true,
     store: new FileStore({logFn: function(){}}),
     cookie: {
-        // httpOnly: true,
+        httpOnly: false,
         secure: true
         // sameSite: false,
         // domain: '.thisissumin.store'
