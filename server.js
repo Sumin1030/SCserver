@@ -26,7 +26,7 @@ app.use(session({
     secret: 'diary',
     resave: false,
     saveUninitialized: true,
-    store: new FileStore(),
+    store: new FileStore({logFn: function(){}}),
     cookie: {
         // httpOnly: true,
         secure: true
