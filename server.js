@@ -28,7 +28,9 @@ app.use(session({
     saveUninitialized: true,
     store: new FileStore(),
     cookie: {
-        secure: true
+        secure: true,
+        sameSite: true,
+        domain: '.thisissumin.store'
     }
 }));
 

@@ -39,6 +39,7 @@ router.post('/signIn', (req, res) => {
         session.name = info.name;
     }
     session.lang = 'ENG';
+    console.log('session set: ', req.session);
     req.session.save(()=>res.send(session.name));
 })
 
@@ -62,7 +63,6 @@ router.get('/logout', (req, res) => {
 router.post('/setLanguage', (req, res) => {
     console.log('set', req.body.lang);
     req.session.lang = req.body.lang;
-    console.log(res.getHeaders());
     res.send(req.session.lang);
 })
 
