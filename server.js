@@ -28,8 +28,8 @@ app.use(session({
     saveUninitialized: true,
     store: new FileStore(),
     cookie: {
-        httpOnly: false
-        // secure: true,
+        httpOnly: true,
+        secure: true,
         // sameSite: false,
         // domain: '.thisissumin.store'
     }
