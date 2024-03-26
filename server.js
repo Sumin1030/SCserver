@@ -4,6 +4,7 @@ const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const app = express();
 const test = require('./Router/test');
+const cookieParser = require('coocke-parser')
 const port=5001; //React가 3000번 포트를 사용하기 때문에 node 서버가 사용할 포트넘버는 다른 넘버로 지정해준다.
 app.listen(port, ()=>{console.log(`Listening on port ${port}`);});
 
@@ -21,6 +22,7 @@ app.use(express.json());
 
 app.use('/image', express.static('./upload'));
 
+app.use(cookieParser('secret'));
 // session 미들웨어를 사용한다. req.session 객체를 사용할 수 있게 해준다. 
 app.use(session({
     secret: 'diary',
