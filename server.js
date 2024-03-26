@@ -27,11 +27,11 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: new FileStore(),
-    cookie: {
-        secure: true,
-        sameSite: false,
-        domain: '.thisissumin.store'
-    }
+    // cookie: {
+        // secure: true,
+        // sameSite: false,
+        // domain: '.thisissumin.store'
+    // }
 }));
 
 // app.use('/', (req, res, next)=> {
