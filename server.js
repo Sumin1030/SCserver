@@ -9,7 +9,6 @@ app.listen(port, ()=>{console.log(`Listening on port ${port}`);});
 
 app.use(cors({
     credentials: true,
-    preflightContinue: true,
     // origin: 'http://localhost:3000'
     origin: 'https://thisissumin.store'
 }));
@@ -29,7 +28,6 @@ app.use(session({
     saveUninitialized: true,
     store: new FileStore(),
     cookie: {
-        sameSite: 'none',
         secure: true
     }
 }));
