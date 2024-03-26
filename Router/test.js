@@ -162,7 +162,7 @@ router.post('/uploadImage', upload.array('file'), (req, res) => {
     for(let i = 0; i < req.files.length; i++){
         const file = req.files[i];
         const idx = imageIdx[i];
-        const fileName = '/image?fileName=' + file.filename;
+        const fileName = '/getImage?fileName=' + file.filename;
         imgs[idx] = {
             type: 'img', 
             content: fileName
