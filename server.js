@@ -26,15 +26,14 @@ app.use(session({
     secret: 'diary',
     resave: false,
     saveUninitialized: true,
-    store: new FileStore({logFn: function(){}, path : './sessions/'}),
-    name: 'myCookie',
+    store: new FileStore()
+    // name: 'myCookie',
     // store: new FileStore(),
-    cookie: {
-        secure: true,
-        httpOnly: false,
-        sameSite: 'none'
-        // domain: '.thisissumin.store'
-    }
+    // cookie: {
+        // secure: true,
+        // httpOnly: false,
+        // sameSite: 'none'
+    // }
 }));
 
 // app.use('/', (req, res, next)=> {
