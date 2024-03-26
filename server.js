@@ -27,9 +27,12 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: new FileStore({logFn: function(){}, path : './sessions/'}),
+    name: 'myCookie',
     // store: new FileStore(),
     cookie: {
-        secure: true
+        secure: true,
+        httpOnly: false,
+        sameSite: 'none'
         // domain: '.thisissumin.store'
     }
 }));
