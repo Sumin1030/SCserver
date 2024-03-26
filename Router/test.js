@@ -40,7 +40,8 @@ router.post('/signIn', (req, res) => {
     }
     session.lang = 'ENG';
     console.log('session set: ', req.session);
-    req.session.save(()=>res.send(session.name));
+    // req.session.save(()=>res.send(session.name));
+    res.send(session.name);
 })
 
 router.get('/isLogined', (req, res) => {
