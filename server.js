@@ -26,13 +26,13 @@ app.use(session({
     secret: 'diary',
     resave: false,
     saveUninitialized: true,
-    store: new FileStore()
-    // cookie: {
+    store: new FileStore(),
+    cookie: {
         // httpOnly: true,
-        // secure: true
+        secure: true
         // sameSite: false,
         // domain: '.thisissumin.store'
-    // }
+    }
 }));
 
 // app.use('/', (req, res, next)=> {
