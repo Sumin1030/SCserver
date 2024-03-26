@@ -39,7 +39,7 @@ router.post('/signIn', (req, res) => {
         session.name = info.name;
     }
     session.lang = 'ENG';
-    console.log('session set: ', req.session);
+    console.log('session set: ', req.sessionID, req.session);
     req.session.save(()=>res.send(session.name));
     // res.send(session.name);
 })
@@ -51,7 +51,7 @@ router.get('/isLogined', (req, res) => {
         userid: session.userid,
         isLogined: session.isLogined
     };
-    console.log("session info : ", info);
+    console.log("session info : ", req.sessionID, info);
     res.send(info);
 });
 

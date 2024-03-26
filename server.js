@@ -34,13 +34,13 @@ app.use(session({
     }
 }));
 
-app.use('/', (req, res, next)=> {
-    console.log('middle', req.url, req.sessionID);
-    console.log(req.session);
-    // res.header("Access-Control-Allow-Origin", "https://sumin1030.github.io"); // 모든 도메인
-    // res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
-//     res.header(`Access-Control-Allow-Headers`, `Content-Type`);
-    next();
-});
+// app.use('/', (req, res, next)=> {
+//     console.log('middle', req.url, req.sessionID);
+//     console.log(req.session);
+//     // res.header("Access-Control-Allow-Origin", "https://sumin1030.github.io"); // 모든 도메인
+//     // res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
+// //     res.header(`Access-Control-Allow-Headers`, `Content-Type`);
+//     next();
+// });
 app.use('/api', test);
 // app.use('/getId', test);
