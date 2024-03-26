@@ -57,7 +57,7 @@ router.get('/isLogined', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.session.destroy();
-    res.clearCookie('connect.sid');
+    // res.clearCookie('connect.sid');
     res.send();
 });
 
