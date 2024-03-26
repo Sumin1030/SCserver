@@ -181,7 +181,7 @@ router.post('/uploadImage', upload.array('file'), (req, res) => {
 });
 
 const path = require('path');
-router.get('/image', (req, res) => {
+router.get('/getImage', (req, res) => {
     const fileName = req.query.fileName;
     const _path = `../upload/${fileName}`;
     console.log(_path);
