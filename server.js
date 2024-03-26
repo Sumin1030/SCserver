@@ -11,7 +11,8 @@ app.listen(port, ()=>{console.log(`Listening on port ${port}`);});
 app.use(cors({
     credentials: true,
     // origin: 'http://localhost:3000'
-    origin: 'https://thisissumin.store'
+    origin: 'https://thisissumin.store',
+    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"]
 }));
 
 // body로 전달되는 내용 파싱. express 내장 모듈
