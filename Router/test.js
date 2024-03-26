@@ -57,8 +57,7 @@ router.get('/isLogined', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.session.destroy();
-    console.log("logout", req.session.isLogined);
-    res.send(req.session.isLogined);
+    res.send();
 });
 
 router.post('/setLanguage', (req, res) => {
