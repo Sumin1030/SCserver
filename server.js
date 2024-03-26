@@ -30,6 +30,7 @@ app.use(session({
     cookie: {
         httpOnly: true,
         secure: true,
+        name: 'connect.sid'
         // sameSite: false,
         // domain: '.thisissumin.store'
     }
