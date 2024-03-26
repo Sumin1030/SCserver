@@ -25,12 +25,11 @@ app.use('/image', express.static('./upload'));
 app.use(session({
     secret: 'diary',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: new FileStore({logFn: function(){}, path : './sessions/'}),
     // store: new FileStore(),
     cookie: {
-        secure: true,
-        sameSite: "none",
+        secure: true
         // domain: '.thisissumin.store'
     }
 }));
