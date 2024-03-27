@@ -4,12 +4,21 @@ const mysql = require('mysql');
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: 'typuz123',
+    user: 'admin',
+    password: 'canadasumin',
     port: 3306,
-    database: 'ftd',
+    database: 'sumin_in_canada',
     multipleStatements : true
-}); 
+});
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'typuz123',
+//     database: 'ftd',
+//     port: 3306,
+//     multipleStatements : true
+// });
+
 
 // const db = createConnectionPool({
   
@@ -45,7 +54,9 @@ const signUp = (info, callback) => {
 }
 const replaceInfo = (info) => {
     Object.keys(info).forEach(key => {
-        info[key] = info[key].replaceAll("'", "\\'");
+        if(typeof info[key] == 'string') {
+            info[key] = info[key].replace(/["'"]/g, "\\'");
+        }
     });
     return info;
 }

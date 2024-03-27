@@ -1,15 +1,15 @@
 const express = require('express');
 const multer = require('multer');
 const router = express.Router();
-const db = require('./../db')
+const db = require('./../db');
 
-// router.get('/', (req, res)=>{
-//     console.log("server.testRouter.js");
-//     db.test((result) => {
-//         console.log(result);
-//         res.send({ result });
-//     });
-// });
+router.get('/', (req, res)=>{
+    console.log("server.testRouter.js");
+    db.test((result) => {
+        console.log(result);
+        res.send({ result });
+    });
+});
 
 router.get('/getID', (req, res) => {
     const id = req.query.id;
@@ -39,33 +39,37 @@ router.post('/signIn', (req, res) => {
         session.name = info.name;
     }
     session.lang = 'ENG';
-    res.status(200).send();
+    console.log('session set: ', req.sessionID, req.session);
+    req.session.save(()=>res.send(session.name));
+    // res.send(session.name);
 })
 
 router.get('/isLogined', (req, res) => {
     const session = req.session;
     const info = {
-        ...session
+        name: session.name,
+        userid: session.userid,
+        isLogined: session.isLogined
     };
-    console.log("session info : ", info);
-    res.status(200).send(info);
+    console.log("session info : ", req.sessionID, info);
+    res.send(info);
 });
 
 router.get('/logout', (req, res) => {
-    req.session.isLogined = false;
-    console.log("logout", req.session.isLogined);
-    res.status(200).send(req.session.isLogined);
+    req.session.destroy();
+    // res.clearCookie('connect.sid');
+    res.send();
 });
 
 router.post('/setLanguage', (req, res) => {
     console.log('set', req.body.lang);
     req.session.lang = req.body.lang;
-    res.status(200).send(req.session.lang);
+    res.send(req.session.lang);
 })
 
 router.get('/getLanguage', (req, res) => {
     let lang = req.session.lang;
-    res.status(200).send(lang);
+    res.send(lang);
 })
 
 router.post(`/addVisit`, (req, res) => {
@@ -158,7 +162,7 @@ router.post('/uploadImage', upload.array('file'), (req, res) => {
     for(let i = 0; i < req.files.length; i++){
         const file = req.files[i];
         const idx = imageIdx[i];
-        const fileName = '/image?fileName=' + file.filename;
+        const fileName = '/getImage?fileName=' + file.filename;
         imgs[idx] = {
             type: 'img', 
             content: fileName
@@ -177,7 +181,7 @@ router.post('/uploadImage', upload.array('file'), (req, res) => {
 });
 
 const path = require('path');
-router.get('/image', (req, res) => {
+router.get('/getImage', (req, res) => {
     const fileName = req.query.fileName;
     const _path = `../upload/${fileName}`;
     console.log(_path);

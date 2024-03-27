@@ -1,15 +1,17 @@
 {
   "dependencies": {
     "concurrently": "^8.2.0",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "http-proxy-middleware": "^2.0.6",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "session-file-store": "^1.5.0"
   },
   "scripts": {
-    "server": "nodemon server",
-    "start": "concurrently --kill-others-on-fail \"npm run server\""
+    "nodemon": "nodemon --ignore 'session/*' server.js",
+    "start": "node server.js"
   }
 }
