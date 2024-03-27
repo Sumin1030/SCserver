@@ -1,26 +1,8 @@
 // db.js
 
 const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'admin',
-    password: 'canadasumin',
-    port: 3306,
-    database: 'sumin_in_canada',
-    multipleStatements : true
-});
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'typuz123',
-//     database: 'ftd',
-//     port: 3306,
-//     multipleStatements : true
-// });
-
-
-// const db = createConnectionPool({
+const config = require('./config.js');
+const connection = mysql.createConnection(config.db);
   
 // });
 const test = (callback) => {

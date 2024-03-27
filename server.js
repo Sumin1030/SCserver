@@ -4,6 +4,7 @@ const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const app = express();
 const test = require('./Router/test');
+const config = require('./config');
 const port=5001; //React가 3000번 포트를 사용하기 때문에 node 서버가 사용할 포트넘버는 다른 넘버로 지정해준다.
 app.listen(port, ()=>{console.log(`Listening on port ${port}`);});
 
@@ -15,8 +16,7 @@ app.use(express.json());
 
 app.use(cors({
     credentials: true,
-    // origin: 'http://localhost:3000'
-    origin: 'https://thisissumin.store',
+    origin: config.url
 }));
 
 app.use('/image', express.static('./upload'));
@@ -28,7 +28,6 @@ app.use(session({
     saveUninitialized: true,
     store: new FileStore()
     // name: 'myCookie',
-    // store: new FileStore(),
     // cookie: {
         // secure: true,
         // httpOnly: false,
