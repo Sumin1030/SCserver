@@ -21,7 +21,7 @@ const ec2_db = {
 const LOCAL = 'local';
 const EC2 = 'ec2';
 
-const setting = LOCAL;
+const setting = EC2;
 
 const config = {
     db: setting == LOCAL? local_db : ec2_db,

@@ -86,6 +86,7 @@ const getGuestBook = (today, callback) => {
                     SELECT USER.NAME, GB.GUEST_BOOK_SQ, GB.DATE, GB.DEPTH, GB.CONTENT, GB.PARENT, GB.GRAND_PARENT
                     FROM GUEST_BOOK AS GB
                     JOIN USER ON USER.ID = GB.ID
+                    WHERE GB.DATE > DATE_SUB('${today}', INTERVAL 300 DAY)
                     ORDER BY GRAND_PARENT, DEPTH, DATE
                 `;
     console.log(query);
@@ -118,7 +119,7 @@ const getUsers = (callback) => {
 }
 
 const getBlogList = (callback) => {
-    const query = `SELECT BLOG_SQ, DATE, TITLE FROM BLOG`;
+    const query = `SELECT BLOG_SQ, DATE, TITLE FROM BLOG ORDER BY DATE DESC`;
     connection.query(query, (err, rows) => {
         callback(rows, err);
     })
@@ -156,8 +157,8 @@ const imgTest = (params, callback) => {
     // });
 
     console.log(params);
-    const sql = `INSERT INTO BLOG VALUES(?, ?, ?, ?, ?);`;
-    const param = [params.sq, params.date, params.content, params.title, '이 컬럼 삭제필요'];
+    const sql = `INSERT INTO BLOG VALUES(?, ?, ?, ?);`;
+    const param = [params.sq, params.date, params.content, params.title];
     connection.query(sql, param, (err, rows) => {
         console.log(param, err, rows);
         callback(param, rows, err);
