@@ -13,6 +13,6 @@
   "scripts": {
     "nodemon": "nodemon --ignore 'session/*' server.js",
     "start": "node server.js",
-    "background": "nohup node server.js"
+    "background": "nohup node server.js&"
   }
 }
