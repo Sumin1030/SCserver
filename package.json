@@ -11,7 +11,7 @@
     "session-file-store": "^1.5.0"
   },
   "scripts": {
-    "nodemon": "nodemon --ignore 'session/*' server.js",
+    "nodemon": "nodemon --ignore 'sessions/*' server.js",
     "start": "node server.js",
     "background": "nohup node server.js&"
   }
