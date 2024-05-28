@@ -165,8 +165,21 @@ const imgTest = (params, callback) => {
     });
 }
 
+const getContribution = (date, callback) => {
+    const query = `SELECT date_format(VISITOR.DATE, '%w') AS DAY, date_format(VISITOR.DATE, '%Y-%m-%d') AS DATE, COUNT(VISITOR.ID) AS COUNT
+                    FROM USER
+                    JOIN VISITOR ON USER.ID = VISITOR.ID
+                    WHERE USER.NAME = 'MASTER' and date_format(VISITOR.DATE, '%Y-%m-%d') > '${date}'
+                    GROUP BY date_format(VISITOR.DATE, '%w'), date_format(VISITOR.DATE, '%Y-%m-%d')
+                    ORDER BY DAY;`
+    connection.query(query, (err, rows) => {
+        callback(rows, err);
+    });
+    
+}
+
 module.exports = { 
     test, searchID, signUp, insertVisit, getVisits, 
     getGuestBook, insertGuestBook, getUsers, getBlogList,
-    getBlogComment, insertBlogComment, getPost, imgTest
+    getBlogComment, insertBlogComment, getPost, imgTest, getContribution
 };

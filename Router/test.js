@@ -49,7 +49,7 @@ router.get('/isLogined', (req, res) => {
         userid: session.userid,
         isLogined: session.isLogined
     };
-    if(!session.lang)session.lang = 'KOR';
+    if(!session.lang)session.lang = '영어';
     res.send({...info, "lang": session.lang});
 });
 
@@ -185,6 +185,13 @@ router.get('/getImage', (req, res) => {
     console.log(_path);
     res.sendFile(path.join(__dirname, `${_path}`));
     // res.send(200);
+});
+
+router.get('/getContribution', (req, res) => {
+    const date = req.query.date;
+    db.getContribution(date, (result) => {
+        res.send(result);
+    });
 });
 
 module.exports = router;
