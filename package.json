@@ -13,6 +13,8 @@
   "scripts": {
     "nodemon": "nodemon --ignore 'sessions/*' server.js",
     "start": "node server.js",
-    "background": "nohup node server.js&"
+    "background": "nohup node server.js&",
+    "forever": "forever start -o ./log/out.log -e ./log/err.log server.js",
+    "back-forever": "nohup forever start -w -o ./log/out.log -e ./log/err.log server.js --watchIgnore"
   }
 }
