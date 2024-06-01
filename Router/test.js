@@ -50,7 +50,9 @@ router.get('/isLogined', (req, res) => {
         isLogined: session.isLogined
     };
     if(!session.lang)session.lang = '영어';
-    res.send({...info, "lang": session.lang});
+    const result = {...info, "lang": session.lang};
+    console.log(result);
+    res.send(result);
 });
 
 router.get('/logout', (req, res) => {
